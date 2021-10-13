@@ -1,0 +1,37 @@
+.browser {
+    border-radius: 1rem;
+    background: #e8e8e8;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.browserControls {
+    padding: 0.25rem 0.6rem;
+}
+
+.browserControls > span {
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: lightgray;
+    margin-right: 0.3rem;
+}
+
+.content {
+    padding: 0.5rem;
+    border-radius: 0 0 1rem 1rem;
+    /* Take all remaining height */
+    flex: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+    .browser {
+        background: #2c2c2c;
+    }
+
+    .browserControls span {
+        background: #4e4e4e;
+    }
+}

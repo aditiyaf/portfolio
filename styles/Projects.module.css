@@ -1,0 +1,48 @@
+h1.title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.categories {
+    margin: 1rem 0 2.5rem;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.categories span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    border: solid 2px var(--primary-color);
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 250ms ease;
+}
+
+.categories span.current, .categories span:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.projects > div {
+    margin: 0 auto;
+}
+
+.projects > div + div {
+    margin-top: 3rem;
+}
+
+@media only screen and (min-width: 900px) {
+    h1.title {
+        text-align: initial;
+    }
+
+    .categories {
+        white-space: initial;
+    }
+
+    .projects > div + div {
+        margin-top: 5rem;
+    }
+}

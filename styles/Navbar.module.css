@@ -1,0 +1,118 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    margin: 0 auto !important;
+}
+
+.logo {
+    cursor: pointer;
+    color: var(--primary-color);
+    width: 2rem;
+    height: 2rem;
+    transition: transform 250ms;
+}
+
+.logo:hover {
+    transform: scale(1.2);
+}
+
+.container, .links {
+    z-index: 99;
+}
+
+.links a {
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    padding: 0 .1rem;
+}
+
+/* Link underline */
+.links a:after {
+    content: "";
+    height: .25rem;
+    background: var(--primary-color);
+    position: absolute;
+    bottom: -.25rem;
+    left: 0; right: 0;
+    border-radius: .25rem;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    transform-origin: right;
+}
+
+.links a:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Only underline link if user is in that page */
+.links .currentPage:after {
+    transform: scaleX(1);
+}
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    .links a {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .links a:after {
+        background: var(--text);
+    }
+    
+    /* Hide links if not open */
+    .links:not(.mobile) a {
+        display: none;
+    }
+
+    .mobileToggle {
+        font-size: 1.75rem;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    /* Animation to slide down the mobile navbar */
+    @keyframes slideDown {
+        from {transform: translateY(-100%);}
+        to {transform: translateY(0);}
+    }
+    
+    /* On mobile make the navbar links take the full screen */
+    .mobile {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary-color);
+        animation: slideDown 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        /* Disable scrolling */
+        touch-action: none;
+    }
+
+    /* Display the ✖ in the same place as ☰ */
+    .mobile .mobileToggle {
+        position: absolute;
+        top: 2rem;
+        width: 80%;
+        text-align: right;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 600px) {
+    .links a:not(:last-of-type) {
+        margin-right: 5rem;
+    }
+
+    .mobileToggle {
+        display: none;
+    }
+}

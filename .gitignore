@@ -1,0 +1,6 @@
+node_modules
+.next
+out
+sanity/dist
+build
+public/sanity

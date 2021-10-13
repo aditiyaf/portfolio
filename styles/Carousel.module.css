@@ -1,0 +1,79 @@
+.wrapper {
+    /* Disable vertical scrollbar */
+    overflow-y: hidden;
+
+    /* Space at beginning and end of carousel */
+    /* Width is the greater of:
+        - 10vw (slide = 80vw, (100vw - 80vw) / 2 = 10vw)
+        - whatever space is left if slides are taking the full max-width 1200px
+          (i.e. (100vw - 1200px) / 2)
+    */
+    padding: 0 max(10vw, calc((100vw - 1200px) / 2));
+}
+
+/* Disable scrollbar on non-touch devices */
+.wrapper:not(.touch) {
+    overflow-x: hidden;
+}
+
+.carousel {
+    /* Force slides to appear all in one line */
+    white-space: nowrap;
+
+    /* Show transition while moving carousel */
+    transition: transform 0.75s ease-out;
+    display: flex;
+    align-items: center;
+}
+
+.slide {
+    width: 80vw;
+    max-width: 1200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: all 0.5s linear;
+    transform: scale(0.9);
+    opacity: 0.25;
+}
+
+.slide.current {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.dots {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background: lightgray;
+    transition: all 0.5s ease-out;
+}
+
+.dot.current {
+    width: 25px;
+    background: #333;
+}
+
+.dot:not(:last-of-type) {
+    margin-right: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .dot {
+        background: #333;
+    }
+
+    .dot.current {
+        background: lightgray;
+    }
+}
